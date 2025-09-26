@@ -9,6 +9,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Application {
 
@@ -62,10 +63,157 @@ public class Application {
         ElementoDAO ElD = new ElementoDAO(eT);
         UtenteDAO Ud = new UtenteDAO(eT);
         PrestitoDAO pD = new PrestitoDAO(eT);
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Scegli le operazioni da effettuare");
+        scanner.nextLine();
+        System.out.println(" 1= Salvataggio elemento 2= Rimozione by Isbn 3=Cerca tramite Isbn 4=Cerca per autore 5= ricerca pr titolo 6= elenco prestito da nTessera  7= tutti prestiti scaduti ");
+
+     int nscelta = scanner.nextInt();
+
+     switch (nscelta){
+
+         case 1 -> {
+             System.out.println(" 1 = libro 2= rivista");
+            int sceltaelemento = scanner.nextInt();
+
+
+             switch (sceltaelemento) {
+                 case 1 -> {
+
+                     System.out.println("inserisci titolo");
+                     String titolo = scanner.nextLine();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci giorno pubblicazione (1-31)");
+                     int giorno = scanner.nextInt();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci mese pubblicazione (1-12)");
+                     int mese = scanner.nextInt();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci anno pubblicazione");
+                     int anno = scanner.nextInt();
+                     scanner.nextLine();
+
+                     LocalDate dataPubblicazione = LocalDate.of(anno, mese, giorno);
+
+                     System.out.println("inserisci numero pagine");
+                     int npagine = scanner.nextInt();
+                     scanner.nextLine();
+
+
+                     System.out.println("inserisci autore");
+                     String autore = scanner.nextLine();
+                     scanner.nextLine();
+
+                     System.out.println(" inserisci genere 1= FANTASY  2= HORROR  3= ACTION 4=THRILLER 5=ROMANCE ");
+                     int sceltagenere = scanner.nextInt();
+                     scanner.nextLine();
+
+                     Genere genere = Genere.FANTASY;
+                     switch (sceltagenere) {
+                         case 1 -> genere = Genere.FANTASY;
+                         case 2 -> genere = Genere.HORROR;
+                         case 3 -> genere = Genere.ACTION;
+                         case 4 -> genere = Genere.THRILLER;
+                         case 5 -> genere = Genere.ROMANCE;
+                         default -> {
+                             System.out.println("Errore genere sbagliato");
+                             break;
+                         }
+                     }
+
+                     Libro nuovolibro = new Libro(titolo, dataPubblicazione, npagine, autore, genere);
+                     ElD.save(nuovolibro);
+                     System.out.println("aggiunta libro...");
+                     System.out.println("Il Libro aggiunto e'" + nuovolibro.toString());
+
+                     }
+
+
+                 case 2 -> {
+                     System.out.println("inserisci titolo");
+                     String titolo = scanner.nextLine();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci giorno pubblicazione (1-31)");
+                     int giorno = scanner.nextInt();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci mese pubblicazione (1-12)");
+                     int mese = scanner.nextInt();
+                     scanner.nextLine();
+
+                     System.out.println("inserisci anno pubblicazione");
+                     int anno = scanner.nextInt();
+                     scanner.nextLine();
+
+                     LocalDate dataPubblicazione = LocalDate.of(anno, mese, giorno);
+
+                     System.out.println("inserisci numero pagine");
+                     int npagine = scanner.nextInt();
+                     scanner.nextLine();
+
+                     System.out.println(" inserisci periodicita' 1= Settimanale  2= mensile  3= semestrale");
+                     int sceltatempo = scanner.nextInt();
+                     scanner.nextLine();
+
+                     Periodicita periodicita = Periodicita.MENSILE;
+                     switch (sceltatempo) {
+                         case 1 -> periodicita = Periodicita.SETTIMANALE;
+                         case 2 -> periodicita = Periodicita.MENSILE;
+                         case 3 -> periodicita = Periodicita.SEMESTRALE;
+                         default -> {
+                             System.out.println("Errore genere sbagliato");
+                             break;
+                         }
+
+                         Rivista nuovarivista = new Rivista(titolo, dataPubblicazione, npagine, periodicita)
+                         ElD.save(nuovarivista);
+                         System.out.println("aggiunta rivista...");
+                         System.out.println("la rivista aggiunta e'" + nuovarivista.toString());
+
+                 }
+
+
+             }
+
+
+         }
+
+
+
+
+
+
+
+
+
+         case 2 -> {}
+         case 3 -> {}
+         case 4 -> {}
+         case 5 -> {}
+         case 6 -> {}
+         case 7 -> {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+     }
 
 
 
 
     }
-}
+        }
