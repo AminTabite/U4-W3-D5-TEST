@@ -1,8 +1,6 @@
 package amintabite.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -11,6 +9,9 @@ public class Libro extends Elemento{
     private String autore;
     @Enumerated(EnumType.STRING)
     private Genere genere;
+    @OneToOne
+    @JoinColumn(name = "Elemento_Id")
+    private Elemento elemento;
 
     public Libro(){
 
@@ -20,8 +21,9 @@ public class Libro extends Elemento{
         super(titolo, annopublication, npagine);
         this.autore = autore;
         this.genere = genere;
-    }
 
+
+    }
 
     public String getAutore() {
         return autore;

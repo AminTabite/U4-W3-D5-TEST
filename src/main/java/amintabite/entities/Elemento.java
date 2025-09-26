@@ -1,18 +1,21 @@
 package amintabite.entities;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Elemento {
+public  abstract class Elemento {
     @Id
     @GeneratedValue
+    @Column(name = "Isbn")
     protected long idisbn;
+    @Column(name = "Titolo")
     protected String titolo;
+    @Column(name = "Pubblicazione")
     protected LocalDate annopublication;
+    @Column(name = "Numero pagine")
     protected int npagine;
 
 
@@ -21,7 +24,7 @@ public class Elemento {
     }
 
     public Elemento( String titolo,LocalDate annopublication, int npagine){
-        
+
         this.titolo= titolo;
         this.annopublication= annopublication;
         this.npagine= npagine;

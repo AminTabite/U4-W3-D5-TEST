@@ -5,10 +5,12 @@
     <persistence-unit name="U4-W3-D5-TEST">
         <!-- Il nome della persistence unit è importante e ci servirà usarlo dopo nel codice JAVA -->
         <!-- Se non dichiaro le mie entities qua, non le troverà e non creerà automaticamente le tabelle -->
-       <!-- <class>amintabite.entities.Event</class>
-        <class>amintabite.entities.Location</class>
-        <class>amintabite.entities.Persona</class>
-        <class>amintabite.entities.Partecipazioni</class>   -->
+        <class>amintabite.entities.Utente</class>
+        <class>amintabite.entities.Elemento</class>
+        <class>amintabite.entities.Prestito</class>
+        <class>amintabite.entities.Libro</class>
+        <class>amintabite.entities.Rivista</class>
+
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/U4-W3-D5-TEST"/>
             <!-- Dopo l'ultimo slash devo inserire il nome del database (QUESTO DEVE ESISTERE PERO') -->

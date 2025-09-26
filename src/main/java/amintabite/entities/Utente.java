@@ -1,9 +1,6 @@
 package amintabite.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,13 +10,18 @@ import java.util.List;
 public class Utente {
 @Id
 @GeneratedValue
+@Column(name = "Utente_Id")
     private long utenteid;
+    @Column(name = "Nome")
     private String nome;
+    @Column(name = "Cognome")
     private String cognome;
+    @Column(name = "Data di nascita")
     private LocalDate dataDiNascita;
+    @Column(name = "Numero tessera")
     private int numeroTessera;
 
-    @OneToMany(mappedBy = "utenteprestito")
+    @OneToMany(mappedBy = "prestitoId")
     private List<Prestito> prestiti;
 
     public Utente(){

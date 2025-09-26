@@ -1,6 +1,6 @@
 package amintabite.entities;
 
-public enum Periodicitá {
+public enum Periodicita {
     SETTIMANALE,
     MENSILE,
     SEMESTRALE

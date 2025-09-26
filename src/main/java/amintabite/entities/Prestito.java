@@ -8,15 +8,28 @@ import java.time.LocalDate;
 public class Prestito {
     @Id
     @GeneratedValue
+    @Column(name = "Prestito_id")
     private long prestitoId;
-    private Elemento elprestito;
+
+    @Column(name = "Inizio prestito")
     private LocalDate inizioprestito;
     private LocalDate restituzione;
+
+    @Column(name = "Restituzione effettiva")
     private LocalDate resEffettiva;
 
-    @ManyToOne
+    @ManyToOne  //manytone verso utente
     @JoinColumn(name = "utente_id")
     private Utente utenteprestito;
+
+    @OneToOne // onetoone libro
+    @JoinColumn(name = "Libro_Id")
+    private Libro libro;
+
+
+    @OneToOne // onetoone rivista
+    @JoinColumn(name = "Rivista_Id")
+    private Rivista rivista;
 
 
     public Prestito() {
@@ -27,27 +40,17 @@ public class Prestito {
     public Prestito(Utente utente, Elemento elprestito,
                     LocalDate inizioprestito, LocalDate restituzione, LocalDate resEffettiva) {
         this.utenteprestito = utente;
-        this.elprestito = elprestito;
         this.inizioprestito = inizioprestito;
         this.restituzione = restituzione;
         this.resEffettiva = resEffettiva;
     }
-
     public Utente getUtente() {
         return utenteprestito;
     }
-
     public void setUtente(Utente utente) {
         this.utenteprestito = utente;
     }
 
-    public Elemento getElprestito() {
-        return elprestito;
-    }
-
-    public void setElprestito(Elemento elprestito) {
-        this.elprestito = elprestito;
-    }
 
     public LocalDate getInizioprestito() {
         return inizioprestito;
@@ -77,7 +80,7 @@ public class Prestito {
     public String toString() {
         return "Prestito{" +
                 "utente=" + utenteprestito +
-                ", elprestito=" + elprestito +
+                ", elprestito=" +
                 ", inizioprestito=" + inizioprestito +
                 ", restituzione=" + restituzione +
                 ", resEffettiva=" + resEffettiva +
