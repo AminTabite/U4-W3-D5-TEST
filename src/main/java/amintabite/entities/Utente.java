@@ -1,6 +1,8 @@
 package amintabite.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
@@ -9,22 +11,22 @@ import java.util.List;
 @Entity
 
 public class Utente {
-
-    private long id;
+@Id
+@GeneratedValue
+    private long utenteid;
     private String nome;
     private String cognome;
     private LocalDate dataDiNascita;
     private int numeroTessera;
 
-    @OneToMany(mappedBy = "utente")
+    @OneToMany(mappedBy = "utenteprestito")
     private List<Prestito> prestiti;
 
     public Utente(){
 
     }
 
-    public Utente(long id, String nome, String cognome, LocalDate dataDiNascita, int numeroTessera){
-        this.id = id;
+    public Utente( String nome, String cognome, LocalDate dataDiNascita, int numeroTessera){
         this.nome= nome;
         this.cognome= cognome;
         this.dataDiNascita = dataDiNascita;
@@ -32,12 +34,12 @@ public class Utente {
     }
 
 
-    public long getId() {
-        return id;
+    public long getUtenteid() {
+        return utenteid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUtenteid(long utenteid) {
+        this.utenteid = utenteid;
     }
 
     public String getNome() {
@@ -75,7 +77,7 @@ public class Utente {
     @Override
     public String toString() {
         return "Utente{" +
-                "id=" + id +
+                "id=" + utenteid +
                 ", nome='" + nome + '\'' +
                 ", cognome='" + cognome + '\'' +
                 ", dataDiNascita=" + dataDiNascita +

@@ -16,8 +16,8 @@ public class Libro extends Elemento{
 
     }
 
-    public Libro(long idisbn, String titolo, LocalDate annopublication, int npagine, String autore, Genere genere) {
-        super(idisbn, titolo, annopublication, npagine);
+    public Libro( String titolo, LocalDate annopublication, int npagine, String autore, Genere genere) {
+        super(titolo, annopublication, npagine);
         this.autore = autore;
         this.genere = genere;
     }

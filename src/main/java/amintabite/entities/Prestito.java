@@ -1,21 +1,21 @@
 package amintabite.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
 public class Prestito {
-    private Utente utente;
+    @Id
+    @GeneratedValue
+    private long prestitoId;
     private Elemento elprestito;
     private LocalDate inizioprestito;
     private LocalDate restituzione;
     private LocalDate resEffettiva;
 
     @ManyToOne
-    @JoinColumn(name = "utente");
+    @JoinColumn(name = "utente_id")
     private Utente utenteprestito;
 
 
@@ -26,7 +26,7 @@ public class Prestito {
 
     public Prestito(Utente utente, Elemento elprestito,
                     LocalDate inizioprestito, LocalDate restituzione, LocalDate resEffettiva) {
-        this.utente = utente;
+        this.utenteprestito = utente;
         this.elprestito = elprestito;
         this.inizioprestito = inizioprestito;
         this.restituzione = restituzione;
@@ -34,11 +34,11 @@ public class Prestito {
     }
 
     public Utente getUtente() {
-        return utente;
+        return utenteprestito;
     }
 
     public void setUtente(Utente utente) {
-        this.utente = utente;
+        this.utenteprestito = utente;
     }
 
     public Elemento getElprestito() {
@@ -76,7 +76,7 @@ public class Prestito {
     @Override
     public String toString() {
         return "Prestito{" +
-                "utente=" + utente +
+                "utente=" + utenteprestito +
                 ", elprestito=" + elprestito +
                 ", inizioprestito=" + inizioprestito +
                 ", restituzione=" + restituzione +

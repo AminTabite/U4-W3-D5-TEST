@@ -1,11 +1,14 @@
 package amintabite.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
 @Entity
 public class Rivista extends Elemento {
+
 
     private Periodicitá periodProd;
 
@@ -14,8 +17,8 @@ public class Rivista extends Elemento {
 
     }
 
-    public Rivista(long idisbn, String titolo, LocalDate annopublication, int npagine, Periodicitá periodProd) {
-        super(idisbn, titolo, annopublication, npagine);
+    public Rivista(String titolo, LocalDate annopublication, int npagine, Periodicitá periodProd) {
+        super(titolo, annopublication, npagine);
         this.periodProd = periodProd;
     }
 
