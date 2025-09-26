@@ -7,10 +7,15 @@ import java.time.LocalDate;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public  abstract class Elemento {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "elemento_seq")
+    @SequenceGenerator(name = "elemento_seq", sequenceName = "id", allocationSize = 1)
     @Column(name = "Isbn")
     protected long idisbn;
+
+
+
     @Column(name = "Titolo")
     protected String titolo;
     @Column(name = "Pubblicazione")

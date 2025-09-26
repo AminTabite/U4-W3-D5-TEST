@@ -14,7 +14,6 @@ public class Prestito {
     @Column(name = "Inizio prestito")
     private LocalDate inizioprestito;
     private LocalDate restituzione;
-
     @Column(name = "Restituzione effettiva")
     private LocalDate resEffettiva;
 
@@ -38,10 +37,10 @@ public class Prestito {
 
 
     public Prestito(Utente utente, Elemento elprestito,
-                    LocalDate inizioprestito, LocalDate restituzione, LocalDate resEffettiva) {
+                    LocalDate inizioprestito, LocalDate resEffettiva) {
         this.utenteprestito = utente;
         this.inizioprestito = inizioprestito;
-        this.restituzione = restituzione;
+        this.restituzione = inizioprestito.plusDays(30);
         this.resEffettiva = resEffettiva;
     }
     public Utente getUtente() {

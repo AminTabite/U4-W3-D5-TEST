@@ -1,5 +1,6 @@
 package amintabite;
 
+import amintabite.dao.ElementoDAO;
 import amintabite.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -39,7 +40,27 @@ public class Application {
                 LocalDate.of(2002, 05,10), 20);
         Utente utente2 = new Utente("Luca", "Bianchi", LocalDate.of(2000, 8, 22), 23);
         Utente utente3 = new Utente("Sara", "Verdi", LocalDate.of(2001, 3, 15), 22);
-        
+
+        Prestito prestito1 = new Prestito(utente2, libro3,
+                LocalDate.of(2025,9, 26), LocalDate.of(2025,9,30));
+
+        Prestito prestito2 = new Prestito(utente1, rivista2,
+                LocalDate.of(2025, 9, 27), LocalDate.of(2025, 10, 27));
+
+        Prestito prestito3 = new Prestito(utente3, libro1,
+                LocalDate.of(2025, 9, 28), LocalDate.of(2025, 10, 28));
+
+        Prestito prestito4 = new Prestito(utente3, rivista1,
+                LocalDate.of(2025, 9, 29), LocalDate.of(2025, 10, 29));
+
+        Prestito prestito5 = new Prestito(utente2, libro2,
+                LocalDate.of(2025, 9, 30), LocalDate.of(2025, 10, 30));
+
+
+        ElementoDAO ElD = new ElementoDAO(eT);
+
+        ElD.save(libro1);
+        ElD.save(libro2);
 
 
         System.out.println("Hello World!");
