@@ -1,15 +1,14 @@
 package amintabite.dao;
 
-import amintabite.entities.Elemento;
 import amintabite.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class UtenteDao {
+public class UtenteDAO {
 
     private  final EntityManager entityManager;
 
-    public UtenteDao(EntityManager entityManager) {
+    public UtenteDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

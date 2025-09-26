@@ -1,6 +1,8 @@
 package amintabite;
 
 import amintabite.dao.ElementoDAO;
+import amintabite.dao.PrestitoDAO;
+import amintabite.dao.UtenteDAO;
 import amintabite.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -41,26 +43,48 @@ public class Application {
         Utente utente2 = new Utente("Luca", "Bianchi", LocalDate.of(2000, 8, 22), 23);
         Utente utente3 = new Utente("Sara", "Verdi", LocalDate.of(2001, 3, 15), 22);
 
-        Prestito prestito1 = new Prestito(utente2, libro3,
+        Prestito prestito1 = new Prestito(utente2, libro4,
                 LocalDate.of(2025,9, 26), LocalDate.of(2025,9,30));
 
         Prestito prestito2 = new Prestito(utente1, rivista2,
                 LocalDate.of(2025, 9, 27), LocalDate.of(2025, 10, 27));
 
-        Prestito prestito3 = new Prestito(utente3, libro1,
+        Prestito prestito3 = new Prestito(utente3, libro5,
                 LocalDate.of(2025, 9, 28), LocalDate.of(2025, 10, 28));
 
         Prestito prestito4 = new Prestito(utente3, rivista1,
                 LocalDate.of(2025, 9, 29), LocalDate.of(2025, 10, 29));
 
-        Prestito prestito5 = new Prestito(utente2, libro2,
+        Prestito prestito5 = new Prestito(utente2, libro1,
                 LocalDate.of(2025, 9, 30), LocalDate.of(2025, 10, 30));
 
 
         ElementoDAO ElD = new ElementoDAO(eT);
+        UtenteDAO Ud = new UtenteDAO(eT);
+        PrestitoDAO pD = new PrestitoDAO(eT);
 
-        ElD.save(libro1);
-        ElD.save(libro2);
+        ElD.save(libro3);
+        ElD.save(libro4);
+        ElD.save(libro5);
+
+
+        Ud.save(utente1);
+        Ud.save(utente2);
+        Ud.save(utente3);
+
+        pD.save(prestito1);
+        pD.save(prestito2);
+        pD.save(prestito3);
+        pD.save(prestito4);
+        pD.save(prestito5);
+
+        ElD.save(rivista1);
+        ElD.save(rivista2);
+        ElD.save(rivista3);
+        ElD.save(rivista4);
+        ElD.save(rivista5);
+
+
 
 
         System.out.println("Hello World!");
