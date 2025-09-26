@@ -1,0 +1,10 @@
+Il mio ragionamento è :
+
+Un utente può avere molti ordini.
+
+1 ordine per facilitare la gestione equivale ad 1 libro. 
+Un utente in base alla tessera ha diritto a Tot prestiti al mese.
+
+Quindi 1 ordine equivale ad 1 elemento ma l'utente può avere più ordini per portarsi a casa più libri. 
+
+Elemento ha un collegamento One to One perché 1 elemento è o una rivista o un libro.
