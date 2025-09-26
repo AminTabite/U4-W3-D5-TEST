@@ -63,30 +63,9 @@ public class Application {
         UtenteDAO Ud = new UtenteDAO(eT);
         PrestitoDAO pD = new PrestitoDAO(eT);
 
-        ElD.save(libro3);
-        ElD.save(libro4);
-        ElD.save(libro5);
-
-
-        Ud.save(utente1);
-        Ud.save(utente2);
-        Ud.save(utente3);
-
-        pD.save(prestito1);
-        pD.save(prestito2);
-        pD.save(prestito3);
-        pD.save(prestito4);
-        pD.save(prestito5);
-
-        ElD.save(rivista1);
-        ElD.save(rivista2);
-        ElD.save(rivista3);
-        ElD.save(rivista4);
-        ElD.save(rivista5);
 
 
 
 
-        System.out.println("Hello World!");
     }
 }
